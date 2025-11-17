@@ -1,0 +1,17 @@
+rules:
+  - name: SOLID Principles
+    description: Todas as classes devem seguir os princípios SOLID (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion).
+    enforcement: mandatory
+    check: "Verificar se classes têm uma responsabilidade única e interfaces são segregadas."
+
+  - name: DDD Bounded Contexts
+    description: Usar Domain-Driven Design com bounded contexts para isolamento de domínios.
+    enforcement: recommended
+    check: "Definir contexts claros e evitar acoplamento entre domínios."
+    example: "Em um sistema de e-commerce, separar contexts para 'Catálogo' e 'Pedidos'."
+
+  - name: Code Review
+    description: Todo código deve passar por code review antes de merge.
+    enforcement: mandatory
+    check: "Aprovação de pelo menos um reviewer sênior."
+    example: "Usar GitHub PR com revisões obrigatórias."

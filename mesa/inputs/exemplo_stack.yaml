@@ -1,0 +1,18 @@
+stack:
+  linguagem: Java 17
+  frontend: Angular 17
+  libs:
+    - Spring Boot: 3.2.5
+    - Spring Data JPA: 3.2.x
+    - MapStruct: 1.5.5.Final
+    - PostgreSQL: 42.7.x
+  sistema:
+    tipo: existente
+    arquitetura: monolito
+  story_draft_path: docs/story_draft.md
+  tech_draft_path: docs/tech_draft.md
+  repo: git@bitbucket.org/geofence/meu-repo.git
+
+# Variações:
+# - Linguagem: Python, Framework: Django, Banco: MySQL
+# - Linguagem: C#, Framework: .NET Core, Banco: SQL Server

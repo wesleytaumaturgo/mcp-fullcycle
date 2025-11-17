@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  mcp-fullcycle:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - plantuml
+      - sonarqube
+
+  plantuml:
+    image: plantuml/plantuml-server:latest
+    ports:
+      - "8081:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  sonarqube:
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:h2:tcp://localhost:9092/sonar
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/api/system/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  jmeter:
+    image: justb4/jmeter:latest
+    ports:
+      - "9270:9270"
+    healthcheck:
+      test: ["CMD", "jmeter", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  git-tools:
+    image: alpine/git:latest
+    command: ["sh", "-c", "while true; do sleep 30; done"]
+    healthcheck:
+      test: ["CMD", "git", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis_data:

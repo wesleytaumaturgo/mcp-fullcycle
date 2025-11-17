@@ -1,0 +1,93 @@
+name: mcp_dev_flow
+description: Workflow incremental de 10 fases para desenvolvimento colaborativo guiado por IA.
+
+phases:
+  - id: 1
+    name: Intake
+    description: Coleta de requisitos iniciais e contexto do projeto.
+    steps:
+      - Coletar inputs via template.
+      - Validar viabilidade básica.
+    approval_required: true
+    next_phase: 2
+
+  - id: 2
+    name: Análise
+    description: Análise detalhada de requisitos, riscos e dependências.
+    steps:
+      - Identificar atores e casos de uso.
+      - Avaliar riscos técnicos.
+    approval_required: true
+    next_phase: 3
+
+  - id: 3
+    name: Arquitetura
+    description: Definição de arquitetura, design patterns e tecnologias.
+    steps:
+      - Definir bounded contexts (DDD).
+      - Escolher stack (ex.: Spring Boot, Oracle).
+    approval_required: true
+    next_phase: 4
+
+  - id: 4
+    name: Implementação
+    description: Desenvolvimento do código base e funcionalidades.
+    steps:
+      - Criar skeleton do código.
+      - Implementar endpoints/APIs.
+    approval_required: true
+    next_phase: 5
+
+  - id: 5
+    name: Testes
+    description: Execução de testes unitários, integração e cobertura.
+    steps:
+      - Escrever testes TDD.
+      - Executar suite de testes (>80% cobertura).
+    approval_required: true
+    next_phase: 6
+
+  - id: 6
+    name: Segurança
+    description: Validação de aspectos de segurança e compliance.
+    steps:
+      - Auditar LGPD e roles.
+      - Verificar vulnerabilidades (OWASP).
+    approval_required: true
+    next_phase: 7
+
+  - id: 7
+    name: Custos
+    description: Análise de custos, ROI e otimização.
+    steps:
+      - Estimar horas de desenvolvimento.
+      - Calcular payback.
+    approval_required: true
+    next_phase: 8
+
+  - id: 8
+    name: Go/No-Go
+    description: Decisão final de prosseguir ou abortar.
+    steps:
+      - Revisar métricas de qualidade.
+      - Decidir baseado em riscos.
+    approval_required: true
+    next_phase: 9
+
+  - id: 9
+    name: Handover
+    description: Preparação para entrega e documentação.
+    steps:
+      - Gerar documentação final.
+      - Preparar para deploy.
+    approval_required: true
+    next_phase: 10
+
+  - id: 10
+    name: Closure
+    description: Finalização do projeto e lições aprendidas.
+    steps:
+      - Arquivar artefatos.
+      - Coletar feedback.
+    approval_required: false
+    next_phase: null

@@ -1,0 +1,30 @@
+checks:
+  - name: SOLID Compliance
+    type: architecture
+    threshold: 100%
+    description: "Verificar aderência aos princípios SOLID em todas as classes."
+
+  - name: Test Coverage
+    type: testing
+    threshold: 80%
+    description: "Cobertura de testes unitários deve ser >80%."
+
+  - name: Security Scan
+    type: security
+    threshold: 0
+    description: "Zero vulnerabilidades críticas no OWASP Top 10."
+
+  - name: Cost Estimation
+    type: cost
+    threshold: 100%
+    description: "ROI estimado deve ser positivo."
+
+  - name: Code Quality
+    type: quality
+    threshold: A
+    description: "Pontuação SonarQube deve ser A ou superior."
+
+  - name: Performance
+    type: performance
+    threshold: 2000ms
+    description: "Tempo de resposta médio < 2000ms."

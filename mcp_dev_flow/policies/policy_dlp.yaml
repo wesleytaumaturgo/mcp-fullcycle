@@ -1,0 +1,16 @@
+deny:
+  - pattern: "password|senha"
+    action: block
+    reason: "Proibido compartilhar senhas em texto plano."
+
+  - pattern: "cpf|cnpj|rg|cpf|ssn"
+    action: mask
+    reason: "Dados pessoais devem ser mascarados conforme LGPD/GDPR."
+
+  - pattern: "api_key|token|secret"
+    action: encrypt
+    reason: "Chaves de API e tokens devem ser criptografados."
+
+  - pattern: "email|telefone"
+    action: anonymize
+    reason: "Informações de contato devem ser anonimizadas."
