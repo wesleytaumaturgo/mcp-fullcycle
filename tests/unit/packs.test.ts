@@ -17,7 +17,7 @@ describe('Mesa Pack', () => {
 
       expect(result).toContain(goal);
       expect(result).toContain(template);
-      expect(result).toContain('Rodada de Discuss?o');
+      expect(result).toContain('Rodada de Discussão');
       expect(result).toContain('Mesa Tech');
     });
 

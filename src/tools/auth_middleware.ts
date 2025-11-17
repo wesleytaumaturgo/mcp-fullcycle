@@ -26,11 +26,7 @@ export class AuthMiddleware {
       }
 
       const token = authHeader.substring(7);
-      console.log('DEBUG: Token received:', token.substring(0, 20) + '...');
-      console.log('DEBUG: JWT Secret:', this.jwtSecret);
-
       const decoded = jwt.verify(token, this.jwtSecret) as any;
-      console.log('DEBUG: Token decoded successfully:', { id: decoded.id, role: decoded.role });
 
       req.user = {
         id: decoded.id,
@@ -40,7 +36,6 @@ export class AuthMiddleware {
 
       next();
     } catch (error) {
-      console.log('DEBUG: JWT verification failed:', error.message);
       logger.error(error as Error, 'Erro na autenticação JWT');
       res.status(401).json({ error: 'Token inválido ou expirado' });
     }

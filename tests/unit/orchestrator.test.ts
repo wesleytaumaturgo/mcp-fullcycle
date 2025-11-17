@@ -80,7 +80,18 @@ describe('FlowOrchestrator', () => {
       mockConfig.packs = [mockPack];
       mockConfig.securityFactory().dlpScanner.mockResolvedValue(false);
 
-      await expect(orchestrator.run(input)).rejects.toThrow('Viola??o de seguran?a');
+      try {
+        await orchestrator.run(input);
+        throw new Error('Expected security violation error to be thrown');
+      } catch (error) {
+        if ((error as Error).message === 'Expected security violation error to be thrown') {
+          throw error; // Re-throw se for o erro inesperado
+        }
+        // Se chegou aqui, é o erro esperado
+        expect(error).toBeInstanceOf(Error);
+        expect((error as Error).message).toContain('Viola');
+        expect((error as Error).message).toContain('segurança');
+      }
     });
   });
 
